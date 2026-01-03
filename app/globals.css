@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #e4e4e7;
+  --neon-purple: #a78bfa;
+  --muted-purple: #8b7ba8;
+  --soft-emerald: #6ee7b7;
+  --glass-bg: rgba(10, 10, 15, 0.6);
+  --glass-border: rgba(167, 139, 250, 0.12);
 }
 
 @theme inline {
@@ -12,15 +17,86 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: #000000;
+  color: var(--foreground);
+  min-height: 100vh;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Glassmorphism - Refined */
+.glass-card {
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(167, 139, 250, 0.12);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* Neon Glow - High Contrast */
+.neon-glow {
+  color: #a78bfa;
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.5),
+               0 0 40px rgba(167, 139, 250, 0.3);
+}
+
+/* Subtle Glow - Readable */
+.neon-glow-subtle {
+  color: #a78bfa;
+  text-shadow: 0 0 12px rgba(167, 139, 250, 0.4);
+}
+
+/* Positive State - Soft Emerald */
+.state-positive {
+  color: #6ee7b7;
+  text-shadow: 0 0 16px rgba(110, 231, 183, 0.3);
+}
+
+/* Muted State */
+.state-muted {
+  color: #a1a1aa;
+}
+
+/* Status Indicator */
+.status-indicator {
+  background: rgba(167, 139, 250, 0.08);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+}
+
+/* Trust Signal */
+.trust-signal {
+  background: rgba(110, 231, 183, 0.05);
+  border: 1px solid rgba(110, 231, 183, 0.1);
+}
+
+/* No Transitions */
+* {
+  transition: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 10, 15, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(167, 139, 250, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(167, 139, 250, 0.3);
+}
+
+/* Subtle Pulse */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.subtle-pulse {
+  animation: subtle-pulse 3s ease-in-out infinite;
 }
