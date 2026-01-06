@@ -4,7 +4,9 @@ export default async function ROIPage() {
   const data = await getDashboardData();
   const timeSaved = calculateTimeSaved(data.jobs);
 
-  const totalRevenue = data.jobs.reduce((sum, job) => sum + job.price, 0);
+  const totalRevenue = data.jobs
+    .filter(j => j.booked && j.paid)
+    .reduce((sum, job) => sum + job.price, 0);
   const bookedJobs = data.jobs.filter(j => j.booked).length;
   const completedJobs = data.jobs.filter(j => j.status === 'completed').length;
 

@@ -5,7 +5,9 @@ export default async function DashboardPage() {
   const timeSaved = calculateTimeSaved(data.jobs);
 
   // Executive Metrics
-  const totalRevenue = data.jobs.reduce((sum, job) => sum + job.price, 0);
+  const totalRevenue = data.jobs
+    .filter(j => j.booked && j.paid)
+    .reduce((sum, job) => sum + job.price, 0);
   const bookedJobs = data.jobs.filter(j => j.booked).length;
   const osirisCost = bookedJobs * 15; // $15 per booked job
   const netProfit = totalRevenue - osirisCost;
